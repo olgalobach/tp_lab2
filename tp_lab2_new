@@ -1,0 +1,59 @@
+Часть 1
+
+mkdir tp_labs
+cd tp_labs
+echo "# tp_lab2" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git branch -M main
+git remote add origin https://github.com/olgalobach/tp_lab2.git
+git push -u origin main
+touch hello_world.cpp
+mousepad hello_world.cpp
+git add hello_world.cpp
+git commit -m "change1"
+mousepad hello_world.cpp
+git push origin main
+git status
+
+Часть 2
+
+git checkout -b patch1
+mousepad hello_world.cpp
+git commit -a -m "change3"
+git push origin patch1
+git status
+mousepad hello_world.cpp
+git commit -a -m "change4"
+git push origin patch1
+git merge main
+git checkout main
+git merge --no-ff patch1
+git push origin main
+git push origin -d patch1
+git checkout patch1
+git pull origin main
+git log
+git checkout main
+git branch -d  patch1
+
+Часть 3
+
+git checkout -b patch2
+clang-format -i -style=WebKit hello_world.cpp
+git commit -a -m "change1"
+git push origin patch2
+git checkout main
+mousepad hello_world.cpp
+git commit -a -m "change5"
+git pull
+git rebase main
+git status
+cat hello_world.cpp 
+git checkout patch2
+git merge main
+git push origin patch2
+git checkout main
+git merge --no-ff patch2
+git push origin main
